@@ -1,0 +1,43 @@
+Definimos la función es primo
+Función EsPrimo(n):
+    si(n<2):
+      retornar False
+    si(n==2):
+      retornar True
+    si(n%2==0):
+      retornar False
+    Para i en el rango (i=3,n/i,++2):
+        si n mod i==0:
+          retornar False
+    si no:
+      retornar True
+
+
+Realizamos la consulta
+
+Ingresamos el valor de n
+n = 10000000
+
+Creamos la criba booleana
+nPrimes = [True para i en el rango (n + 1)]
+
+Agregamos las restricciones 
+nPrimes[0] = nPrimes[1] = False
+nPrimes[2] = True
+
+Creamos un arreglo para almacenar los números impares
+XY_Primes = [nPrimes[2]]
+
+Inicilizamos la estructura repetitiva
+X=0
+Mientras X <= n**0.5:
+  Y=0
+  mientras Y < n**0.25:
+    si EsPrimo(X**2 + Y**4) == True:
+      XY_Primes.append(X**2 + Y**4)
+    Y+=1
+  X+=1
+
+Imprimimos la cantidad de impares que cumplen con X**2 + Y**4 hasta n
+CantidadImpares = len(XY_Primes)
+Imprimir(‘La cantidad de números impares es:’ , CantidadImpares)
